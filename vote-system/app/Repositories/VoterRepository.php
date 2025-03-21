@@ -12,6 +12,11 @@ class VoterRepository
         return Voter::create($data);
     }
 
+    public function list(): Collection
+    {
+        return Voter::all();
+    }
+
     public function findByDocument(string $document) : ?Voter
     {
         return Voter::where('document', $document)->first();
@@ -20,5 +25,13 @@ class VoterRepository
     public function getCandidates() : Collection
     {
         return Voter::whereIsCandidate(true)->get();
+    }
+
+    public function getCandidatesWithVotes() : Collection
+    {
+        return Voter::whereIsCandidate(true)
+            ->withCount("votes")
+            ->orderBy("votes_count", "desc")
+            ->get();
     }
 }

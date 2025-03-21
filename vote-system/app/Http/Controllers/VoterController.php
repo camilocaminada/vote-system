@@ -38,4 +38,10 @@ class VoterController extends Controller
         $candidates = $this->voterService->listCandidates();
         return response()->json($candidates);
     }
+
+    public function getCandidatesWithVotes(): JsonResponse
+    {
+        $candidates = $this->voterService->listCandidates(withVotes: true);
+        return response()->json($candidates);
+    }
 }

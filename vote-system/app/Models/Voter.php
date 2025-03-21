@@ -4,9 +4,10 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 /**
- * 
+ *
  *
  * @property int $id
  * @property string $name
@@ -46,4 +47,9 @@ class Voter extends Model
         'dob' => 'date',
         'is_candidate' => 'boolean',
     ];
+
+    public function votes(): BelongsTo
+    {
+        return $this->belongsTo(Vote::class, 'id', 'candidate_voted_id');
+    }
 }

@@ -27,8 +27,11 @@ class VoterService
         }
     }
 
-    public function listCandidates(): Collection
+    public function listCandidates(?bool $withVotes = false): Collection
     {
+        if ($withVotes) {
+            return $this->voterRepository->getCandidatesWithVotes();
+        }
         return $this->voterRepository->getCandidates();
     }
 }

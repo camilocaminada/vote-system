@@ -13,4 +13,7 @@ Route::post('/voters', [VoterController::class, 'store']);
 
 Route::post('/votes', [VoteController::class, 'store']);
 
-Route::get('/candidates', [VoterController::class, 'getCandidates']);
+Route::prefix('candidates')->group(function () {
+    Route::get('', [VoterController::class, 'getCandidates']);
+    Route::get('/votes', [VoterController::class, 'getCandidatesWithVotes']);
+});
