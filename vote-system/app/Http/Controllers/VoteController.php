@@ -40,4 +40,18 @@ class VoteController extends Controller
         $votes = $this->voteService->list();
         return response()->json($votes);
     }
+
+    public function get(int $id): JsonResponse
+    {
+        $validator = Validator::make(["id" => $id],[
+            'id' => 'required|int|exists:votes'
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json(['errors' => $validator->errors()], 422);
+        }
+
+        $vote = $this->voteService->get($id);
+        return response()->json($vote);
+    }
 }

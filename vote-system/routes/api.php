@@ -14,6 +14,7 @@ Route::post('/voters', [VoterController::class, 'store']);
 Route::prefix('votes')->group(function () {
     Route::post('', [VoteController::class, 'store']);
     Route::get('', [VoteController::class, 'list']);
+    Route::get('{id}', [VoteController::class, 'get']);
 });
 
 Route::prefix('candidates')->group(function () {

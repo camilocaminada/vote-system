@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Models\Vote;
 use App\Models\Voter;
 use App\Repositories\VoteRepository;
 use Exception;
@@ -37,4 +38,8 @@ class VoteService
         return $this->voteRepository->list();
     }
 
+    public function get(int $id): Vote
+    {
+        return $this->voteRepository->get($id);
+    }
 }

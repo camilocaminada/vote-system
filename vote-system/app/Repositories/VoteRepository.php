@@ -24,4 +24,9 @@ class VoteRepository
     {
         return Vote::with("candidate", "voter")->get();
     }
+
+    public function get(int $id): Vote
+    {
+        return Vote::whereId($id)->with("candidate", "voter")->firstOrFail();
+    }
 }
