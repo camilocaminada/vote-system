@@ -5,6 +5,7 @@ namespace App\Services;
 use App\Models\Voter;
 use App\Repositories\VoteRepository;
 use Exception;
+use Illuminate\Database\Eloquent\Collection;
 
 class VoteService
 {
@@ -29,6 +30,11 @@ class VoteService
         $this->voteRepository->createVote($voter->id, $candidateId);
 
         return true;
+    }
+
+    public function list(): Collection
+    {
+        return $this->voteRepository->list();
     }
 
 }

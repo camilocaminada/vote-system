@@ -34,4 +34,10 @@ class VoteController extends Controller
             return response()->json(['error' => $e->getMessage()], 400);
         }
     }
+
+    public function list(): JsonResponse
+    {
+        $votes = $this->voteService->list();
+        return response()->json($votes);
+    }
 }
