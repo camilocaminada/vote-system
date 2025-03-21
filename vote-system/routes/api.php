@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\VoteController;
 use App\Http\Controllers\VoterController;
 use Illuminate\Http\Request;
@@ -21,3 +22,11 @@ Route::prefix('candidates')->group(function () {
     Route::get('', [VoterController::class, 'getCandidates']);
     Route::get('votes', [VoterController::class, 'getCandidatesWithVotes']);
 });
+
+Route::prefix('admin')->group(function () {
+    Route::post('', [AdminController::class, 'store']);
+    Route::post('login', [AdminController::class, 'login']);
+    Route::post('update-password', [AdminController::class, 'updatePassword'])
+        ->middleware('auth:sanctum');
+});
+
