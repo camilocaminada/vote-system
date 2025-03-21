@@ -4,6 +4,7 @@ namespace App\Services;
 
 use App\Repositories\VoterRepository;
 use Exception;
+use Illuminate\Database\Eloquent\Collection;
 
 class VoterService
 {
@@ -24,5 +25,10 @@ class VoterService
         } catch (Exception) {
             throw new Exception('Could not create voter');
         }
+    }
+
+    public function listCandidates(): Collection
+    {
+        return $this->voterRepository->getCandidates();
     }
 }

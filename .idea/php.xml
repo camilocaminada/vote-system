@@ -129,6 +129,8 @@
       <path value="$PROJECT_DIR$/vote-system/vendor/laravel/framework" />
       <path value="$PROJECT_DIR$/vote-system/vendor/composer" />
       <path value="$PROJECT_DIR$/vote-system/vendor/laravel/sanctum" />
+      <path value="$PROJECT_DIR$/vote-system/vendor/barryvdh/laravel-ide-helper" />
+      <path value="$PROJECT_DIR$/vote-system/vendor/barryvdh/reflection-docblock" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="8.2" />

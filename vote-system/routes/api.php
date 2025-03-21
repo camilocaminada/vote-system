@@ -12,3 +12,5 @@ Route::get('/user', function (Request $request) {
 Route::post('/voters', [VoterController::class, 'store']);
 
 Route::post('/votes', [VoteController::class, 'store']);
+
+Route::get('/candidates', [VoterController::class, 'getCandidates']);

@@ -33,4 +33,9 @@ class VoterController extends Controller
         }
     }
 
+    public function getCandidates(): JsonResponse
+    {
+        $candidates = $this->voterService->listCandidates();
+        return response()->json($candidates);
+    }
 }
