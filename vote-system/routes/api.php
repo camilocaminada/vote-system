@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\VoteController;
 use App\Http\Controllers\VoterController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -9,3 +10,5 @@ Route::get('/user', function (Request $request) {
 })->middleware('auth:sanctum');
 
 Route::post('/voters', [VoterController::class, 'store']);
+
+Route::post('/votes', [VoteController::class, 'store']);

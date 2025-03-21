@@ -10,4 +10,9 @@ class VoterRepository
     {
         return Voter::create($data);
     }
+
+    public function findByDocument(string $document) : ?Voter
+    {
+        return Voter::where('document', $document)->first();
+    }
 }
