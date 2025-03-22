@@ -14,17 +14,17 @@ Route::post('/voters', [VoterController::class, 'store'])->middleware('auth:sanc
 
 Route::prefix('votes')->group(function () {
     Route::post('', [VoteController::class, 'store']);
-    Route::get('', [VoteController::class, 'list']);
-    Route::get('{id}', [VoteController::class, 'get']);
+    Route::get('', [VoteController::class, 'list'])->middleware('auth:sanctum');
+    Route::get('{id}', [VoteController::class, 'get'])->middleware('auth:sanctum');
 });
 
 Route::prefix('candidates')->group(function () {
     Route::get('', [VoterController::class, 'getCandidates']);
-    Route::get('votes', [VoterController::class, 'getCandidatesWithVotes']);
+    Route::get('votes', [VoterController::class, 'getCandidatesWithVotes'])->middleware('auth:sanctum');
 });
 
 Route::prefix('admin')->group(function () {
-    Route::post('', [AdminController::class, 'store']);
+    Route::post('', [AdminController::class, 'store'])->middleware('auth:sanctum');
     Route::post('login', [AdminController::class, 'login']);
     Route::post('update-password', [AdminController::class, 'updatePassword'])
         ->middleware('auth:sanctum');
