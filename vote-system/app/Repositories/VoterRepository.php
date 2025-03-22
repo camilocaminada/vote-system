@@ -7,9 +7,21 @@ use Illuminate\Database\Eloquent\Collection;
 
 class VoterRepository
 {
-    public function create(array $data)
+    public function create(
+        string $name,
+        string $lastName,
+        string $document,
+        string $dob,
+        bool $is_candidate = false
+    ) : Voter
     {
-        return Voter::create($data);
+        return Voter::create([
+            'name' => $name,
+            'lastName' => $lastName,
+            'document' => $document,
+            'dob' => $dob,
+            'is_candidate' => $is_candidate,
+        ]);
     }
 
     public function list(): Collection

@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Models\Voter;
 use App\Repositories\VoterRepository;
 use Exception;
 use Illuminate\Database\Eloquent\Collection;
@@ -18,10 +19,16 @@ class VoterService
     /**
      * @throws Exception
      */
-    public function createVoter(array $data)
+    public function createVoter(array $data): Voter
     {
         try {
-            return $this->voterRepository->create($data);
+            return $this->voterRepository->create(
+                name: $data['name'],
+                lastName: $data['lastName'],
+                document: $data['document'],
+                dob: $data['dob'],
+                is_candidate: $data['is_candidate'] ?? null
+            );
         } catch (Exception) {
             throw new Exception('Could not create voter');
         }

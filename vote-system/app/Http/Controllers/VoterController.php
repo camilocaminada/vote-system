@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Services\VoterService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class VoterController extends Controller
 {
@@ -17,6 +18,11 @@ class VoterController extends Controller
 
     public function store(Request $request): JsonResponse
     {
+        $admin = Auth::user();
+        if (!$admin) {
+            return response()->json(['error' => 'You do not have permission for this action'], 403);
+        }
+
         $validated = $request->validate([
             'name' => 'required|string|max:255',
             'lastName' => 'required|string|max:255',
